@@ -10,9 +10,9 @@ type Country {
     # currency: String!
     # languages: [String!]!
     # currency: String!
-    # capital: City!
+    capital: City
     # neighbors: [Country!]!
-    # continent: Continent!
+    continent: Continent!
 }
 
 type Continent {
