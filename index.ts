@@ -4,28 +4,20 @@ import {
     getCountry,
     countryCapital,
     countryContinent,
+    countryNeighbors,
     continentCountries,
+    continentObject,
 } from './resolvers';
-
-const books = [
-    {
-        title: 'The Awakening',
-        author: 'Kate Chopin',
-    },
-    {
-        title: 'City of Glass',
-        author: 'Paul Auster',
-    },
-];
 
 const resolvers = {
     Query: {
-        books: () => books,
         getCountry,
+        getContinent: continentObject,
     },
     Country: {
         capital: countryCapital,
         continent: countryContinent,
+        neighbors: countryNeighbors,
     },
     Continent: {
         countries: continentCountries,

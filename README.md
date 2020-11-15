@@ -2,23 +2,21 @@
 
 GraphQL API to query Geo taxonomy data. Current implementation allows to query Country related information.
 
-Sample API call:
+Sample Query:
 ```graphql
 query {
-  getCountry(iso:"IN") {
+  getCountry(iso:"US") {
     name
-    iso
     capital {
       name
     }
     continent {
       iso
-      countries {
-        name
-        capital {
-          name
-        }
-      }
+    }
+    neighbors {
+      name
+      currency
+      languages
     }
   }
 }
@@ -28,41 +26,30 @@ Sample response:
 {
   "data": {
     "getCountry": {
-      "name": "India",
-      "iso": "IN",
+      "name": "United States",
       "capital": {
-        "name": "New Delhi"
+        "name": "Washington"
       },
       "continent": {
-        "iso": "AS",
-        "countries": [
-          {
-            "name": "United Arab Emirates",
-            "capital": {
-              "name": "Abu Dhabi"
-            }
-          },
-          {
-            "name": "Afghanistan",
-            "capital": {
-              "name": "Kabul"
-            }
-          },
-          {
-            "name": "Armenia",
-            "capital": {
-              "name": "Yerevan"
-            }
-          },
-          {
-            "name": "Azerbaijan",
-            "capital": {
-              "name": "Baku"
-            }
-          },
-          
-          ...
-      }
+        "iso": "NA"
+      },
+      "neighbors": [
+        {
+          "name": "Canada",
+          "currency": "Dollar",
+          "languages": "en-CA,fr-CA,iu"
+        },
+        {
+          "name": "Mexico",
+          "currency": "Peso",
+          "languages": "es-MX"
+        },
+        {
+          "name": "Cuba",
+          "currency": "Peso",
+          "languages": "es-CU,pap"
+        }
+      ]
     }
   }
 }
@@ -74,7 +61,12 @@ Run development server using below commands and visit [`http://localhost:4000/`]
 
 ```bash
 npm install
-npx nodemon
+npx run dev
+```
+
+To regenerate types from GraphQL schema, run:
+```bash
+npm run codegen
 ```
 
 ## TODO
@@ -82,4 +74,4 @@ npx nodemon
 - [ ] Implement fields in Country data
 - [ ] Generate types based on gql schema
 - [ ] Implement more taxonomies
-
+- [ ] Improve error handling

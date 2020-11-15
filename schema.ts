@@ -1,40 +1,8 @@
 import { gql } from 'apollo-server';
+import { join } from 'path';
+import fs from 'fs';
 
-export default gql`
+const schema = fs.readFileSync(join(__dirname, 'schema.gql'));
 
-type Country {
-    iso: String!
-    name: String!
-    # population: Int!
-    # area: Int!
-    # currency: String!
-    # languages: [String!]!
-    # currency: String!
-    capital: City
-    # neighbors: [Country!]!
-    continent: Continent!
-}
-
-type Continent {
-    iso: String!
-    countries: [Country!]!
-}
-
-type City {
-    name: String!
-    country: Country!
-}
-
-type Query {
-    books: [Book]
-    getCountry(iso: String!): Country
-    # getContinent(iso: String!): Continent!
-    # getCapitalCity(countryIso: String!): [City!]!
-}
-
-type Book {
-    title: String
-    author: String
-}
-
-`
+// Parses schema AST.
+export default gql`${schema}`
