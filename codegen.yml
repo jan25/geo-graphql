@@ -1,0 +1,5 @@
+schema: schema.gql
+generates:
+  ./types.d.ts:
+    plugins:
+      - typescript

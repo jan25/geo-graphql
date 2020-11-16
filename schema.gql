@@ -1,0 +1,26 @@
+type Country {
+    iso: String!
+    name: String!
+    population: Int
+    area: Int
+    currency: String
+    languages: String
+    capital: City
+    neighbors: [Country!]
+    continent: Continent
+}
+
+type Continent {
+    iso: String!
+    countries: [Country]
+}
+
+type City {
+    name: String!
+    country: Country
+}
+
+type Query {
+    getCountry(iso: String!): Country
+    getContinent(iso: String!): Continent
+}

@@ -1,4 +1,4 @@
-# Geo API using GraphQL
+# Geo GraphQL API
 
 GraphQL API to query Geo taxonomy data. Current implementation allows to query Country related information.
 
@@ -75,3 +75,4 @@ npm run codegen
 - [ ] Generate types based on gql schema
 - [ ] Implement more taxonomies
 - [ ] Improve error handling
+- [ ] Implement first, last in lists
